@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Reduced Motion Demo</title>
+	<style>
+		.box {
+			width: 100px;
+			height: 100px;
+			background: #8b5cf6;
+		}
+	</style>
+</head>
+<body>
+	<div class="box" id="box"></div>
+	<div id="status">checking</div>
+
+	<script>
+		window.__state = "checking";
+		window.__reducedMotion = false;
+
+		const box = document.getElementById("box");
+		const status = document.getElementById("status");
+
+		const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+		window.__reducedMotion = mq.matches;
+
+		if (mq.matches) {
+			// Reduced motion: skip animation entirely
+			window.__state = "skipped";
+			status.textContent = "skipped";
+			box.style.opacity = "1";
+			box.style.transform = "translateX(100px)";
+		} else {
+			// Normal: run a WAAPI animation
+			const animation = box.animate(
+				[
+					{ opacity: 0, transform: "translateX(0px)" },
+					{ opacity: 1, transform: "translateX(100px)" },
+				],
+				{ duration: 300, fill: "forwards" },
+			);
+
+			animation.finished.then(() => {
+				animation.commitStyles();
+				animation.cancel();
+				window.__state = "animated";
+				status.textContent = "animated";
+			});
+		}
+	</script>
+</body>
+</html>

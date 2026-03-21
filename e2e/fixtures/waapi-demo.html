@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>WAAPI Demo</title>
+	<script type="importmap">
+	{
+		"imports": {
+			"react": "/e2e/fixtures/react-shim.js",
+			"react/jsx-runtime": "/e2e/fixtures/react-jsx-shim.js"
+		}
+	}
+	</script>
+	<style>
+		.box {
+			width: 100px;
+			height: 100px;
+			background: #3b82f6;
+			opacity: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="box" id="box"></div>
+	<div id="status">idle</div>
+
+	<script type="module">
+		import { animate, delay, parallel, sequence } from "/dist/index.js";
+
+		const box = document.getElementById("box");
+		const status = document.getElementById("status");
+
+		window.__state = "idle";
+		window.__finalOpacity = "0";
+		window.__parallelDone = false;
+		window.__commitStylesApplied = false;
+
+		// Test 1: sequence of two animations
+		async function runSequenceTest() {
+			const seq = sequence(
+				animate(box, [{ opacity: 0 }, { opacity: 1 }], { duration: 200 }),
+				animate(box, [{ transform: "translateX(0px)" }, { transform: "translateX(100px)" }], { duration: 200 }),
+			);
+			seq.play();
+			await seq.finished;
+			window.__state = "finished";
+			window.__finalOpacity = getComputedStyle(box).opacity;
+			status.textContent = "finished";
+		}
+
+		// Test 2: parallel animations
+		async function runParallelTest() {
+			const par = parallel(
+				animate(box, [{ opacity: 0 }, { opacity: 1 }], { duration: 200 }),
+				animate(box, [{ transform: "scale(0.5)" }, { transform: "scale(1)" }], { duration: 200 }),
+			);
+			par.play();
+			await par.finished;
+			window.__parallelDone = true;
+		}
+
+		// Test 3: commitStyles persistence
+		async function runCommitStylesTest() {
+			const anim = animate(box, [{ opacity: 0 }, { opacity: 0.75 }], { duration: 150 });
+			anim.play();
+			await anim.finished;
+			// After animate() finishes, it commits styles and cancels the WAAPI animation.
+			// The opacity should persist as an inline style.
+			const inlineOpacity = box.style.opacity;
+			window.__commitStylesApplied = inlineOpacity !== "" && inlineOpacity !== "0";
+		}
+
+		// Run all tests
+		await runSequenceTest();
+		await runParallelTest();
+		await runCommitStylesTest();
+	</script>
+</body>
+</html>

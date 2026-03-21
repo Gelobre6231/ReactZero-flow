@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Scroll Demo</title>
+	<style>
+		html, body {
+			margin: 0;
+			padding: 0;
+		}
+		.spacer {
+			height: 3000px;
+			background: linear-gradient(to bottom, #e0f2fe, #3b82f6);
+		}
+		.target {
+			position: absolute;
+			top: 1500px;
+			left: 50px;
+			width: 200px;
+			height: 100px;
+			background: #ef4444;
+		}
+	</style>
+</head>
+<body>
+	<div class="spacer"></div>
+	<div class="target" id="target">Target Element</div>
+
+	<script>
+		// Expose scroll progress for Playwright to read
+		window.__scrollProgress = 0;
+
+		function calculateScrollProgress() {
+			const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+			const maxScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+			if (maxScroll <= 0) return 0;
+			return Math.max(0, Math.min(1, scrollTop / maxScroll));
+		}
+
+		function onScroll() {
+			requestAnimationFrame(() => {
+				window.__scrollProgress = calculateScrollProgress();
+			});
+		}
+
+		window.addEventListener("scroll", onScroll, { passive: true });
+
+		// Calculate initial progress
+		window.__scrollProgress = calculateScrollProgress();
+	</script>
+</body>
+</html>

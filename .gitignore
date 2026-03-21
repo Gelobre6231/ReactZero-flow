@@ -1,0 +1,28 @@
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Test outputs
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# Landing page build output
+landing/dist/
+
+# Storybook (descoped)
+storybook-static/
+
+# Auth
+.npmrc
+
+# Editor & tooling
+.claude/
+.planning/
+.vscode/
+*.local
+
+# OS files
+.DS_Store
+Thumbs.db

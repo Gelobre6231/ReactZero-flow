@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>View Transition Demo</title>
+	<style>
+		#content {
+			font-size: 24px;
+			padding: 20px;
+			background: #f0fdf4;
+			border: 2px solid #22c55e;
+			display: inline-block;
+		}
+		button {
+			margin: 20px;
+			padding: 10px 20px;
+			font-size: 16px;
+		}
+	</style>
+</head>
+<body>
+	<div id="content">Before</div>
+	<br>
+	<button type="button" id="trigger">Trigger Transition</button>
+
+	<script>
+		window.__vtSupported = typeof document.startViewTransition === "function";
+		window.__vtFinished = false;
+		window.__vtFallbackUsed = false;
+
+		const content = document.getElementById("content");
+		const trigger = document.getElementById("trigger");
+
+		trigger.addEventListener("click", async () => {
+			if (window.__vtSupported) {
+				try {
+					const transition = document.startViewTransition(() => {
+						content.textContent = "After";
+					});
+					await transition.finished;
+					window.__vtFinished = true;
+				} catch (_err) {
+					// Fallback if transition fails
+					content.textContent = "After";
+					window.__vtFinished = true;
+					window.__vtFallbackUsed = true;
+				}
+			} else {
+				// No View Transition API support -- update DOM directly
+				content.textContent = "After";
+				window.__vtFinished = true;
+				window.__vtFallbackUsed = true;
+			}
+		});
+	</script>
+</body>
+</html>

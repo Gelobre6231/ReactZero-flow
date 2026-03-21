@@ -1,0 +1,92 @@
+{
+	"name": "@reactzero/flow",
+	"version": "0.1.0",
+	"type": "module",
+	"description": "Zero-dependency animation orchestration for React, powered by the Web Animations API",
+	"homepage": "https://motiondesignlv.github.io/ReactZero-Flow/",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"sideEffects": false,
+	"scripts": {
+		"dev": "vite --config landing/vite.config.ts",
+		"build": "vite build && tsc -p tsconfig.build.json",
+		"test": "vitest run --passWithNoTests",
+		"test:watch": "vitest",
+		"lint": "eslint src --ext .ts,.tsx --report-unused-disable-directives --max-warnings 0",
+		"lint:fix": "eslint src --ext .ts,.tsx --fix",
+		"typecheck": "tsc --noEmit",
+		"size": "size-limit",
+		"size:check": "size-limit",
+		"test:e2e": "npm run build && playwright test",
+		"release": "npm run build && npm publish --access public",
+		"landing": "npx serve landing/dist -p 3000 --no-clipboard",
+		"landing:dev": "vite --config landing/vite.config.ts",
+		"landing:build": "vite build --config landing/vite.config.ts"
+	},
+	"keywords": [
+		"animation",
+		"react",
+		"waapi",
+		"web-animations",
+		"sequence",
+		"timeline",
+		"hooks"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/motiondesignlv/ReactZero-Flow.git"
+	},
+	"bugs": {
+		"url": "https://github.com/motiondesignlv/ReactZero-Flow/issues"
+	},
+	"author": "Luis Vargas",
+	"publishConfig": {
+		"access": "public",
+		"provenance": true
+	},
+	"peerDependencies": {
+		"react": ">=18.0.0"
+	},
+	"engines": {
+		"node": ">=20.19.0"
+	},
+	"license": "MIT",
+	"size-limit": [
+		{
+			"path": "dist/index.js",
+			"limit": "10 kB"
+		}
+	],
+	"devDependencies": {
+		"@arethetypeswrong/cli": "^0.18.2",
+		"@eslint/js": "^9.0.0",
+		"@playwright/test": "^1.58.2",
+		"@size-limit/preset-small-lib": "^12.0.1",
+		"@testing-library/dom": "^10.4.1",
+		"@testing-library/react": "^16.3.2",
+		"@types/react": "^19.2.14",
+		"@types/react-dom": "^19.2.3",
+		"@typescript-eslint/eslint-plugin": "^8.0.0",
+		"@typescript-eslint/parser": "^8.0.0",
+		"@vitejs/plugin-react": "^6.0.1",
+		"eslint": "^9.0.0",
+		"eslint-plugin-react": "^7.37.0",
+		"eslint-plugin-react-hooks": "^5.0.0",
+		"globals": "^15.0.0",
+		"happy-dom": "^20.8.4",
+		"publint": "^0.3.18",
+		"react": "^19.2.4",
+		"react-dom": "^19.2.4",
+		"serve": "^14.2.6",
+		"size-limit": "^12.0.1",
+		"typescript": "^5.9.3",
+		"vitest": "^4.1.0"
+	}
+}
