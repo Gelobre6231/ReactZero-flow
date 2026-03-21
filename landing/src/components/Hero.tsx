@@ -215,7 +215,7 @@ export function Hero() {
 							Explore Examples
 						</a>
 						<a
-							href="https://github.com/motiondesignlv/ReactZero-Flow"
+							href="https://github.com/motiondesignlv/ReactZero-flow"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="btn-secondary"

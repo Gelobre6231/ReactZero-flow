@@ -2,8 +2,8 @@
 
 [![npm version](https://img.shields.io/npm/v/%40reactzero%2Fflow)](https://www.npmjs.com/package/@reactzero/flow)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/%40reactzero%2Fflow)](https://bundlephobia.com/package/@reactzero/flow)
-[![license](https://img.shields.io/npm/l/%40reactzero%2Fflow)](https://github.com/motiondesignlv/ReactZero-Flow/blob/main/LICENSE)
-[![CI](https://github.com/motiondesignlv/ReactZero-Flow/actions/workflows/ci.yml/badge.svg)](https://github.com/motiondesignlv/ReactZero-Flow/actions/workflows/ci.yml)
+[![license](https://img.shields.io/npm/l/%40reactzero%2Fflow)](https://github.com/motiondesignlv/ReactZero-flow/blob/main/LICENSE)
+[![CI](https://github.com/motiondesignlv/ReactZero-flow/actions/workflows/ci.yml/badge.svg)](https://github.com/motiondesignlv/ReactZero-flow/actions/workflows/ci.yml)
 
 ![Flow — Animation orchestration for React](./flow.jpg)
 
@@ -296,7 +296,7 @@ Requires the Web Animations API (`Element.animate()`), supported in all modern b
 
 Full documentation, guides, and interactive examples:
 
-[https://motiondesignlv.github.io/ReactZero-Flow/](https://motiondesignlv.github.io/ReactZero-Flow/)
+[https://motiondesignlv.github.io/ReactZero-flow/](https://motiondesignlv.github.io/ReactZero-flow/)
 
 ## Contributing
 

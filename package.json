@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"type": "module",
 	"description": "Zero-dependency animation orchestration for React, powered by the Web Animations API",
-	"homepage": "https://motiondesignlv.github.io/ReactZero-Flow/",
+	"homepage": "https://motiondesignlv.github.io/ReactZero-flow/",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
@@ -41,10 +41,10 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/motiondesignlv/ReactZero-Flow.git"
+		"url": "git+https://github.com/motiondesignlv/ReactZero-flow.git"
 	},
 	"bugs": {
-		"url": "https://github.com/motiondesignlv/ReactZero-Flow/issues"
+		"url": "https://github.com/motiondesignlv/ReactZero-flow/issues"
 	},
 	"author": "Luis Vargas",
 	"publishConfig": {

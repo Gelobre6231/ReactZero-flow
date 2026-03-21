@@ -117,7 +117,7 @@ export function App() {
 							</div>
 							<div className="footer-links">
 								<a
-									href="https://github.com/motiondesignlv/ReactZero-Flow"
+									href="https://github.com/motiondesignlv/ReactZero-flow"
 									target="_blank"
 									rel="noopener noreferrer"
 								>

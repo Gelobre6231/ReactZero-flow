@@ -4,7 +4,7 @@ import { resolve } from "path";
 
 export default defineConfig({
 	plugins: [react()],
-	base: "/ReactZero-Flow/",
+	base: "/ReactZero-flow/",
 	root: resolve(__dirname),
 	resolve: {
 		alias: {

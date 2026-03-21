@@ -10,8 +10,8 @@ Thanks for your interest in contributing! This document covers setup, developmen
 ## Setup
 
 ```bash
-git clone https://github.com/motiondesignlv/ReactZero-Flow.git
-cd ReactZero-Flow
+git clone https://github.com/motiondesignlv/ReactZero-flow.git
+cd ReactZero-flow
 npm install
 ```
 
